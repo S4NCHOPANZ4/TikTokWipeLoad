@@ -10,9 +10,6 @@ import {FaUserAlt} from "react-icons/fa"
 
 const Footer = () => {
 
-
-
-
   return (
     <div className={`${styles.superContainer}`}>
       <div className="flex lg:flex-row flex-col">
