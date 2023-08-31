@@ -2,9 +2,17 @@ import styles from "../styles/styles"
 import { BiSolidFilm } from "react-icons/bi"
 import { FaPaste } from "react-icons/fa"
 import { ImDownload } from "react-icons/im"
+import {BsLinkedin, BsGithub} from "react-icons/bs"
+import {PiBagFill} from "react-icons/pi"
+import {FaUserAlt} from "react-icons/fa"
+
 
 
 const Footer = () => {
+
+
+
+
   return (
     <div className={`${styles.superContainer}`}>
       <div className="flex lg:flex-row flex-col">
@@ -33,6 +41,30 @@ const Footer = () => {
             <h1 className="mt-2 text-center text-gray-50 text-xl font-bold">Your video is ready</h1>
             <p className="mt-2 text-center text-gray-50 text-sm">Great news! Your video is now ready for download without a watermark. You can also download the music separately in mp3 format. Please note that the video will be in mp4 format.</p>
           </div>
+        </div>
+      </div>
+      <div className="mt-8 py-10 flex items-center justify-evenly">
+        <div className="flex items-center justify-center">
+          <FaUserAlt size={25} color={'#fff'}/>
+          <h1 className="ml-2 text-white text-center font-bold">Juan Buitrago</h1>
+        </div>
+        <div className="flex items-center justify-center cursor-pointer">
+          <BsLinkedin size={25} color={'#fff'}/>
+          <a 
+          href="https://www.linkedin.com/in/juan-d-buitrago/" target="_blank"
+          className="ml-2 text-white text-center font-bold hover:underline">/juan-d-buitrago</a>
+        </div>
+        <div className="flex items-center justify-center cursor-pointer">
+          <BsGithub size={25} color={'#fff'}/>
+          <a 
+          href="https://github.com/S4NCHOPANZ4" target="_blank"
+          className="ml-2 text-white text-center font-bold hover:underline">/S4NCHOPANZ4</a>
+        </div>
+        <div className="flex items-center justify-center cursor-pointer">
+          <PiBagFill size={25} color={'#fff'}/>
+          <a 
+          href="https://portfolio5-09.vercel.app" target="_blank"
+          className="ml-2 text-white text-center font-bold hover:underline">portfolio5-09.vercel.app</a>
         </div>
       </div>
     </div>

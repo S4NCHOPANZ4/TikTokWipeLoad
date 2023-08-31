@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_KEY = '262c8da2c2msh4a99bdd66ffa512p1805cajsn6246cc2899b7';
-const API_HOST = 'tiktok-full-info-without-watermark.p.rapidapi.com';
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_HOST = import.meta.env.VITE_API_HOST;
 
 export async function fetchTikTokInfo(url: string) {
   const options = {
