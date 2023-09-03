@@ -29,7 +29,6 @@ const Home = () => {
         if(data === null){
           setError(true)
         }
-        console.log(data)
         setFoundVideo(data)
         setLoading(false)
         setProgress(0)
