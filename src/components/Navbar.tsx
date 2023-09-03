@@ -4,7 +4,7 @@ import icon from "../assets/icon.png"
 const Navbar = () => {
     return (
         <div>
-            <div className="flex top-2 left-4 absolute items-center cursor-pointer">
+            <div className="flex items-center cursor-pointer pt-5">
                 <img src={icon}
                     className="md:w-[65px] md:h-[65px] w-[50px] h-[50px]"
                     alt="" />

@@ -5,15 +5,17 @@ import Navbar from "../components/Navbar"
 import styles from "../styles/styles"
 import { videoObjType } from "../typos"
 import { fetchTikTokInfo } from "../api"
+import {MdBrowserNotSupported} from "react-icons/md"
 import axios from "axios"
 
 
 const Home = () => {
 
   const [foundVideo, setFoundVideo] = useState<videoObjType | null>()
-  const [videoUrl, setVideoUrl] = useState<string | null>('https://www.tiktok.com/@cat.tv.1/video/7215842970644401451?q=cat&t=1693456807330')
+  const [videoUrl, setVideoUrl] = useState<string | null>('https://www.tiktok.com/@shaunmjbcns/video/7274175712267914539')
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
+  const [errorLoaging, setErrorLoaging] = useState<boolean>(false)
   const [progress, setProgress] = useState(0);
 
 
@@ -27,6 +29,7 @@ const Home = () => {
         if(data === null){
           setError(true)
         }
+        console.log(data)
         setFoundVideo(data)
         setLoading(false)
         setProgress(0)
@@ -82,6 +85,13 @@ const Home = () => {
     }
   }, [loading]);
 
+  const handleImageError = () => {
+    setErrorLoaging(true);
+  };
+
+  const handleImageLoad = () => {
+    setErrorLoaging(false);
+  };
 
   return (
     <div className={`${styles.superContainer}`}>
@@ -129,12 +139,24 @@ const Home = () => {
         }
         {foundVideo ?
           <div className="mt-4 bg-[#3737376f] md:w-[675px] w-[80vw] p-5 flex md:flex-row flex-col relative">
-            <div className="md:mr-5 md:pb-0 pb-5 flex items-center justify-center">
-              <img src={foundVideo.cover[0]} alt="" className="h-[375.25px] w-[320px]" />
+            <div className="md:mr-5 md:pb-0 pb-5 flex items-center justify-center relative">
+              <img 
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+              style={{ opacity: errorLoaging ? 0 : 1 }}
+              src={foundVideo.cover[0]} alt="" className="h-[375.25px] w-[320px]" />
+              <div 
+              style={{ opacity: errorLoaging ? 1 : 0 }}
+              className="absolute border-2 border-white h-[375.25px] w-[320px] flex items-center justify-center flex-col">
+                <MdBrowserNotSupported size={30} color={'white'}/>
+                <h1 className="text-white mt-5">Couldn't load preview</h1>
+              </div>
             </div>
             <div className="md:w-[60%] w-[100%]">
               <div className="font-bold text-gray-50 flex items-center text-sm ">
-                <img src={foundVideo.avatar_thumb && foundVideo.avatar_thumb[0]} className="mr-2 rounded-[50%] h-[40px]" alt="" />
+                <img 
+
+                src={foundVideo.avatar_thumb && foundVideo.avatar_thumb[0]} className="mr-2 rounded-[50%] h-[40px]" alt="" />
                 <h1>{foundVideo.author && foundVideo.author[0]}</h1>
               </div>
               <h1 className="text-gray-50 mt-2 text-sm ">{foundVideo.description ? foundVideo.description[0] : 'No description'}</h1>
